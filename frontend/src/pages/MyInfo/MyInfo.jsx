@@ -5,8 +5,8 @@ const MyPage = () => {
   // 더미 데이터 (회원가입 시 기입했던 정보와 스크랩된 상품)
   const userInfo = {
     name: '김이화',
-    email: 'ewha@example.com',
-    userId: 'ewha123',
+    email: 'myname@ewha.ac.kr',
+    userId: 'makemoney',
   };
 
   const scrappedItems = [
