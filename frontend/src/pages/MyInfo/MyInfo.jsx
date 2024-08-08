@@ -1,7 +1,7 @@
 import React from 'react';
-import './MyPage.css';
+import './MyInfo.css';
 
-const MyPage = () => {
+const MyInfo = () => {
   // 더미 데이터 (회원가입 시 기입했던 정보와 스크랩된 상품)
   const userInfo = {
     name: '김이화',
@@ -48,4 +48,5 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default MyInfo;
+
