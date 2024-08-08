@@ -1,54 +1,25 @@
-body {
-  font-family: Arial, sans-serif;
-}
-
 .my-page {
-  width: 80%;
-  margin: 0 auto;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .logo {
+  width: 150px;
   cursor: pointer;
 }
 
-main {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.user-info, .scrap {
+  margin-top: 20px;
 }
 
-.user-info,
-.scrap {
-  margin-bottom: 20px;
-}
-
-.user-info h2,
-.scrap h2 {
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.user-info p,
 .scrap-items {
-  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .scrap-item {
-  margin: 5px 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.scrap-item a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.scrap-item a:hover {
-  text-decoration: underline;
-}
