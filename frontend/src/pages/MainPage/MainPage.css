@@ -84,7 +84,6 @@
 .main-image {
   width: 100%;
   height: auto;
+  max-height: calc(100vh - 70px); /* 헤더 높이를 뺀 화면 높이 */
+  object-fit: cover;
 }
-
-
-
