@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
+import './MainPage.css'; 
 
-const App = () => {
+const MainPage = () => {
   const [bankName, setBankName] = useState('');
   const [error, setError] = useState(false);
 
@@ -43,11 +43,13 @@ const App = () => {
         </div>
       </header>
       <main>
-        <img src="campus.jpg" alt="Campus" className="main-image" />
+        <img src="Campus.jpg.jpeg" alt="Campus" className="main-image" />
       </main>
     </div>
   );
 };
 
-export default App;
+export default MainPage;
+
+
 
