@@ -1,30 +1,66 @@
-import './styled.js';
+import { useState } from 'react';
+import {
+  Container,
+  LogoContainer,
+  Divider,
+  Header,
+  SearchContainer,
+  SearchInput,
+  SearchButton,
+  Menu,
+  MenuButton,
+  LoginButton,
+  MainContent,
+  MainImage,
+  ErrorMessage,
+} from './styled.js';
 
-const App = () => {
+const MainPage = () => {
+  const [bankName, setBankName] = useState('');
+  const [error, setError] = useState(false);
+
+  const handleBankNameChange = (event) => {
+    setBankName(event.target.value);
+    setError(false);
+  };
+
+  const handleSearch = () => {
+    const validBanks = ['KB국민은행', 'NH농협은행', '신한은행', '우리은행', '하나은행'];
+    if (!validBanks.includes(bankName)) {
+      setError(true);
+    }
+  };
+
   return (
-    <div className="container">
-      <header className="header">
-        <img src="/logo.png" alt="EWHA Investigation Logo" className="logo" />
-        <div className="search-container">
-          <input type="text" placeholder="은행 명 입력" className="search-input" />
-          <button className="search-button">🔍</button>
-        </div>
-        <nav className="nav">
-          <a href="#deposit">예금</a>
-          <a href="#savings">적금</a>
-          <a href="#loan">대출</a>
-          <a href="#card">체크카드</a>
-        </nav>
-        <button className="login-button">LOGIN / SIGN UP</button>
-      </header>
-      <main className="main-content">
-        <img src="/Campus.jpg.png" alt="Campus" className="main-image" />
-      </main>
-    </div>
+    <Container>
+      <LogoContainer>
+        <img src="logo.png" alt="Ewha Logo" />
+      </LogoContainer>
+      <Divider />
+      <Header>
+        <SearchContainer>
+          <SearchInput
+            type="text"
+            placeholder="은행명 입력"
+            value={bankName}
+            onChange={handleBankNameChange}
+          />
+          <SearchButton onClick={handleSearch}>🔍</SearchButton>
+          {error && <ErrorMessage>오류 </ErrorMessage>}
+        </SearchContainer>
+        <Menu>
+          <MenuButton onClick={() => alert('예금')}>예금</MenuButton>
+          <MenuButton onClick={() => alert('적금')}>적금</MenuButton>
+          <MenuButton onClick={() => alert('대출')}>대출</MenuButton>
+          <MenuButton onClick={() => alert('체크카드')}>체크카드</MenuButton>
+        </Menu>
+        <LoginButton href="/login">LOGIN / SIGN UP</LoginButton>
+      </Header>
+      <MainContent>
+        <MainImage src="Campus.jpg.jpeg" alt="Campus" />
+      </MainContent>
+    </Container>
   );
 };
 
-export default App;
-
-
-
+export default MainPage;
