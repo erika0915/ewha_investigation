@@ -28,8 +28,6 @@ export function Header() {
 
   return (
     <>
-      {/* TODO: 헤더 영역 공통 컴포넌트로 빼기 */}
-      {/* TODO: 로고 누르면 홈으로 이동되게 */}
       <S.LogoContainer>
         <Link to="/">
           <img src="logo.png" alt="Ewha Logo" />
