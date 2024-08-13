@@ -19,7 +19,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     //백엔드에서 API 제공 시 수정할 부분;
-    if (data.id === "testuser" && data.password === "password123") {
+    if (data.userId === "testuser" && data.password === "password123") {
       alert("로그인 성공");
     } else {
       setShowError(true);
@@ -44,8 +44,10 @@ const Login = () => {
         <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
           <S.LoginFormGroup>
             <S.Label>ID</S.Label>
-            <S.Input type="text" {...register("id")} />
-            {errors.id && <S.ErrorMessage>{errors.id.message}</S.ErrorMessage>}
+            <S.Input type="text" {...register("userId")} />
+            {errors.userId && (
+              <S.ErrorMessage>{errors.userId.message}</S.ErrorMessage>
+            )}
           </S.LoginFormGroup>
           <S.LoginFormGroup>
             <S.Label>PASSWORD</S.Label>
