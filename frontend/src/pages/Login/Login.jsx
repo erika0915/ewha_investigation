@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import * as s from "./Login.styles";
+import * as S from "./Login.styles";
 import LoginValidationSchema from "./validation/LoginValidationSchema";
 
 const Login = () => {
@@ -35,45 +35,45 @@ const Login = () => {
   };
 
   return (
-    <s.LoginPage>
-      <s.Header>
+    <S.LoginPage>
+      <S.Header>
         <img src="/logo.png" alt="EWHA Logo" className="logo" />
-      </s.Header>
-      <s.LoginBar>LOGIN</s.LoginBar>
-      <s.LoginContainer>
-        <s.LoginForm onSubmit={handleSubmit(onSubmit)}>
-          <s.LoginFormGroup>
-            <s.Label>ID</s.Label>
-            <s.Input type="text" {...register("id")} />
-            {errors.id && <s.ErrorMessage>{errors.id.message}</s.ErrorMessage>}
-          </s.LoginFormGroup>
-          <s.LoginFormGroup>
-            <s.Label>PASSWORD</s.Label>
-            <s.Input type="password" {...register("password")} />
+      </S.Header>
+      <S.LoginBar>LOGIN</S.LoginBar>
+      <S.LoginContainer>
+        <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
+          <S.LoginFormGroup>
+            <S.Label>ID</S.Label>
+            <S.Input type="text" {...register("id")} />
+            {errors.id && <S.ErrorMessage>{errors.id.message}</S.ErrorMessage>}
+          </S.LoginFormGroup>
+          <S.LoginFormGroup>
+            <S.Label>PASSWORD</S.Label>
+            <S.Input type="password" {...register("password")} />
             {errors.password && (
-              <s.ErrorMessage>{errors.password.message}</s.ErrorMessage>
+              <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
             )}
-          </s.LoginFormGroup>
-          <s.LoginButtonGroup>
-            <s.LoginButton type="submit">LOGIN</s.LoginButton>
-          </s.LoginButtonGroup>
-        </s.LoginForm>
+          </S.LoginFormGroup>
+          <S.LoginButtonGroup>
+            <S.LoginButton type="submit">LOGIN</S.LoginButton>
+          </S.LoginButtonGroup>
+        </S.LoginForm>
         <button onClick={handleSignUp} className="signup-link">
           SIGN UP
         </button>
-      </s.LoginContainer>
+      </S.LoginContainer>
       {showError && (
         <>
-          <s.Dimmed />
-          <s.Popup>
-            <s.PopupContent>
+          <S.Dimmed />
+          <S.Popup>
+            <S.PopupContent>
               <p>회원 정보가 일치하지 않습니다.</p>
               <button onClick={handleCloseError}>확인</button>
-            </s.PopupContent>
-          </s.Popup>
+            </S.PopupContent>
+          </S.Popup>
         </>
       )}
-    </s.LoginPage>
+    </S.LoginPage>
   );
 };
 
