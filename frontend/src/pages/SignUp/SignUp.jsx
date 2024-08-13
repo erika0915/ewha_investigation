@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { SignUpValidationSchema } from "./validation/SignUpValidationSchema";
+import SignUpValidationSchema from "./validation/SignUpValidationSchema";
 import * as S from "./styles";
 
-const SignUpForm = () => {
+const SignUp = () => {
   const [registrationComplete, setRegistrationComplete] = useState(false);
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const navigate = useNavigate();
@@ -20,15 +20,15 @@ const SignUpForm = () => {
     resolver: yupResolver(SignUpValidationSchema),
   });
 
-  const watchUsername = watch("username");
+  const watchUsername = watch("userId");
 
   useEffect(() => {
-    if (watchUsername && !errors.username) {
+    if (watchUsername && !errors.userId) {
       setIsUsernameValid(true);
     } else {
       setIsUsernameValid(false);
     }
-  }, [watchUsername, errors.username]);
+  }, [watchUsername, errors.userId]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -51,9 +51,9 @@ const SignUpForm = () => {
         <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
           <S.SignUpFormGroup>
             <S.Label>이름</S.Label>
-            <S.Input type="text" {...register("name")} />
-            {errors.name && (
-              <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>
+            <S.Input type="text" {...register("userName")} />
+            {errors.userName && (
+              <S.ErrorMessage>{errors.userName.message}</S.ErrorMessage>
             )}
           </S.SignUpFormGroup>
           <S.SignUpFormGroup>
@@ -65,9 +65,9 @@ const SignUpForm = () => {
           </S.SignUpFormGroup>
           <S.SignUpFormGroup>
             <S.Label>아이디</S.Label>
-            <S.Input type="text" {...register("username")} />
-            {errors.username && (
-              <S.ErrorMessage>{errors.username.message}</S.ErrorMessage>
+            <S.Input type="text" {...register("userId")} />
+            {errors.userId && (
+              <S.ErrorMessage>{errors.userId.message}</S.ErrorMessage>
             )}
             <S.DuplicateCheckButton type="button" disabled={!isUsernameValid}>
               중복 확인
@@ -106,4 +106,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUp;
