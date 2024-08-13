@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FaBookmark } from 'react-icons/fa';
 
-export const MyPageContainer = styled.div`
+export const MyInfoContainer = styled.div`
   display: flex;
   height: 100vh;
 `;
