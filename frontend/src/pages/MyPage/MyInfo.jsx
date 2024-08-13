@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  MyPageContainer,
+  MyInfoContainer,
   Sidebar,
   Content,
   SectionTitle,
@@ -13,10 +13,10 @@ import {
   ScrapItem,
   ScrapItemIcon,
   ScrapItemText,
-} from './MyPage.styled';
+} from './MyInfo.styled';
 import { useNavigate } from 'react-router-dom';
 
-const MyPage = () => {
+const MyInfo = () => {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -36,7 +36,7 @@ const MyPage = () => {
   };
 
   return (
-    <MyPageContainer>
+    <MyInfoContainer>
       <Sidebar>
         <img src="logo.png" alt="Ewha Logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
         <SectionTitle>MY PAGE</SectionTitle>
@@ -69,8 +69,8 @@ const MyPage = () => {
           </ScrapItems>
         </ScrapSection>
       </Content>
-    </MyPageContainer>
+    </MyInfoContainer>
   );
 };
 
-export default MyPage;
+export default MyInfo;
