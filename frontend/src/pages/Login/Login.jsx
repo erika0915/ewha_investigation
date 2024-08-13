@@ -38,6 +38,14 @@ const Login = () => {
     <s.LoginPage>
       <s.Header>
         <img src="/logo.png" alt="EWHA Logo" className="logo" />
+        {isLogin ? (
+          <>
+            <s.MyPageButton href="/mypage">MY PAGE</s.MyPageButton>
+            <s.LogoutLink href="/logout">로그아웃</s.LogoutLink>
+          </>
+        ) : (
+          <s.LoginButton href="/login">LOGIN / SIGN UP</s.LoginButton>
+        )}
       </s.Header>
       <s.LoginBar>LOGIN</s.LoginBar>
       <s.LoginContainer>
