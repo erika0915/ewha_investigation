@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AdminPageContainer,
+  AdminContainer,
   Sidebar,
   Content,
   SectionTitle,
@@ -18,10 +18,10 @@ import {
   ScrapItemIcon,
   ScrapItemText,
   Button,
-} from './AdminPage.styled';
+} from './Admin.styled';
 import { useNavigate } from 'react-router-dom';
 
-const AdminPage = () => {
+const Admin = () => {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -65,7 +65,7 @@ const AdminPage = () => {
   };
 
   return (
-    <AdminPageContainer>
+    <AdminContainer>
       <Sidebar>
         <img src="logo.png" alt="Ewha Logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }} />
         <SectionTitle>ADMIN PAGE</SectionTitle>
@@ -95,8 +95,8 @@ const AdminPage = () => {
           </ScrapItems>
         </ScrapSection>
       </Content>
-    </AdminPageContainer>
+    </AdminContainer>
   );
 };
 
-export default AdminPage;
+export default Admin;
