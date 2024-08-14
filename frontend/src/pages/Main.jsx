@@ -11,4 +11,3 @@ export const Main = () => {
     </S.Container>
   );
 };
-export default Main;
