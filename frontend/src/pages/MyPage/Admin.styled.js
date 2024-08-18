@@ -1,7 +1,35 @@
 import styled from 'styled-components';
+import { FaBookmark } from 'react-icons/fa';
 
 export const Container = styled.div`
+  display: flex;
   padding: 20px;
+`;
+
+export const Sidebar = styled.div`
+  width: 250px;
+  background-color: #186915;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const Logo = styled.img`
+  width: 100px;
+  cursor: pointer;
+`;
+
+export const SectionTitle = styled.h2`
+  font-size: 23px;
+  margin: 50px 0;
+  font-weight: bold;
+`;
+
+export const TableContainer = styled.div`
+  flex-grow: 1;  // 이 부분이 메인 콘텐츠를 사이드바 옆으로 확장합니다.
+  padding-left: 20px;
 `;
 
 export const Table = styled.table`
