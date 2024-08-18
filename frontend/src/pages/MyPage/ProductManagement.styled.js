@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -26,11 +27,42 @@ export const SectionTitle = styled.h2`
   cursor: pointer; /* 클릭 가능하도록 스타일 추가 */
 `;
 
-export const Form = styled.form`
+export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 40px;
   flex: 1;  /* 남은 공간을 폼이 차지하도록 */
+  background-color: #f9f9f9;
+`;
+
+export const FormHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3d8a3e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+`;
+
+export const FormTitle = styled.h2`
+  margin: 0;
+`;
+
+export const ResetButton = styled.button`
+  background-color: #f5f5f5;
+  color: #186915;
+  padding: 10px;
+  border: 1px solid #186915;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+export const FormBody = styled.div`
+  background-color: white;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const Input = styled.input`
@@ -38,6 +70,7 @@ export const Input = styled.input`
   margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
 `;
 
 export const Textarea = styled.textarea`
@@ -45,6 +78,7 @@ export const Textarea = styled.textarea`
   margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
 `;
 
 export const Select = styled.select`
@@ -52,6 +86,7 @@ export const Select = styled.select`
   margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
 `;
 
 export const Button = styled.button`
@@ -62,4 +97,9 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px; /* 폼의 마지막 요소와 여백 추가 */
+`;
+
+export const ResetButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
