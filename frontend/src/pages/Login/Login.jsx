@@ -6,6 +6,8 @@ import * as s from "./Login.styles";
 import LoginValidationSchema from "./validation/LoginValidationSchema";
 
 const Login = () => {
+  const [isLogin, setIsLogin] = useState(false); // isLogin 변수 선언
+
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ const Login = () => {
     //백엔드에서 API 제공 시 수정할 부분;
     if (data.id === "testuser" && data.password === "password123") {
       alert("로그인 성공");
+      setIsLogin(true); // 로그인 성공 시 isLogin 상태를 true로 설정
     } else {
       setShowError(true);
     }
@@ -38,7 +41,7 @@ const Login = () => {
     <s.LoginPage>
       <s.Header>
         <img src="/logo.png" alt="EWHA Logo" className="logo" />
-        {isLogin ? (
+        {isLogin ? ( // isLogin 상태에 따라 로그인/로그아웃 버튼 표시
           <>
             <s.MyPageButton href="/mypage">MY PAGE</s.MyPageButton>
             <s.LogoutLink href="/logout">로그아웃</s.LogoutLink>

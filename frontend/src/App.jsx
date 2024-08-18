@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import ProductList from './ProductList';
-import ProductManagement from './ProductManagement';
+import Admin from './pages/MyPage/Admin';
+import ProductManagement from './pages/MyPage/ProductManagement';
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import DepositPage from "./pages/ProductPage/DepositPage";
@@ -10,7 +10,7 @@ import LoanPage from "./pages/ProductPage/LoanPage";
 import CheckCardPage from "./pages/ProductPage/CheckCardPage";
 import { GlobalStyle } from "./pages/ProductPage/styles";
 import DetailedPage from "./pages/DetailedPage/DetailedPage";
-import MyPage from "./pages/MyPage/MyPage"; 
+import MyInfo from "./pages/MyPage/MyInfo"; 
 import Main from "./pages/Main/Main";
 
 const App = () => {
@@ -19,8 +19,9 @@ const App = () => {
       <nav>
         <ul>
           <li><Link to="/">Main</Link></li>
+          <li><Link to="/admin">Admin</Link></li>
           <li><Link to="/product-management">Product Management</Link></li>
-          <li><Link to="/mypage">MyPage</Link></li>
+          <li><Link to="/myinfo">MyInfo</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">Sign Up</Link></li>
           <li><Link to="/deposit">Deposit</Link></li>
@@ -31,8 +32,9 @@ const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<Main />} /> 
+        <Route path="/admin" element={<Admin />} />
         <Route path="/product-management" element={<ProductManagement />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/myinfo" element={<MyInfo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/deposit" element={<DepositPage />} />
@@ -44,11 +46,5 @@ const App = () => {
     </Router>
   );
 };
-
-export default App;
-
-
-export default App;
-
 
 export default App;

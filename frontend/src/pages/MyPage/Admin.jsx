@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, Table, Th, Td, Button } from './Admin.styled';
 
 const Admin = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleEditClick = () => {
-    history.push('/product-management');
+    navigate('/product-management');
   };
 
   return (
