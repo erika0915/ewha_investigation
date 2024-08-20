@@ -1,0 +1,16 @@
+# IntelliJ IDEA 관련 파일들
+.idea/
+*.iml
+*.iws
+
+# Gradle 관련 파일들
+.gradle/
+build/
+out/
+
+# Log 파일들
+*.log
+
+# 환경 설정 파일들
+application.yml
+*.env
