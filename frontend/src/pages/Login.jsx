@@ -36,6 +36,7 @@ export const Login = () => {
         if (result.message === "Success") {
           window.sessionStorage.setItem("token", result.token);
           window.sessionStorage.setItem("role", result.role);
+          window.sessionStorage.setItem("userCode", result.code);
           setIsLogin(true);
 
           if (data.userId === "admin" && data.password === "adminpassword") {

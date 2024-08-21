@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "../styles/BankSearchSection.styles.js";
 import kbLogo from "../assets/logos/kb.png";
 import nhLogo from "../assets/logos/nh.png";
@@ -21,18 +21,42 @@ const BankSearchSection = ({ bank }) => {
   const [popupMessage, setPopupMessage] = useState("");
   const logoPath = logoMap[bank.logokey];
 
-  const handleBookmarkToggle = (category, productName) => {
-    const key = `${category}-${productName}`;
+  const userCode = window.sessionStorage.getItem("userCode");
+
+  useEffect(() => {
+    const fetchScrapList = async () => {
+      try {
+        const response = await fetch(
+          `http://43.202.58.11:8080/api/users/${userCode}/scraps`
+        );
+        const result = await response.json();
+        if (result.data) {
+          const bookmarkState = {};
+          result.data.forEach((item) => {
+            bookmarkState[item.productCode] = true;
+          });
+          setBookmarkedItems(bookmarkState);
+        }
+      } catch (error) {
+        console.error("Error fetching scrap list:", error);
+      }
+    };
+
+    fetchScrapList();
+  }, [userCode]);
+
+  const handleBookmarkToggle = (productCode) => {
     setBookmarkedItems((prevBookmarks) => {
-      const isBookmarked = prevBookmarks[key];
+      const isBookmarked = prevBookmarks[productCode];
       setPopupMessage(
         isBookmarked
           ? "MY 스크랩에서 삭제되었습니다."
           : "MY 스크랩에 저장되었습니다."
       );
+
       return {
         ...prevBookmarks,
-        [key]: !isBookmarked,
+        [productCode]: !isBookmarked,
       };
     });
     setShowPopup(true);
@@ -64,12 +88,10 @@ const BankSearchSection = ({ bank }) => {
                     <S.ProductName>
                       <S.BookmarkIcon
                         onClick={() =>
-                          handleBookmarkToggle(category, product.productName)
+                          handleBookmarkToggle(product.productCode)
                         }
                       >
-                        {bookmarkedItems[
-                          `${category}-${product.productName}`
-                        ] ? (
+                        {bookmarkedItems[product.productCode] ? (
                           <FaBookmark />
                         ) : (
                           <FaRegBookmark />
