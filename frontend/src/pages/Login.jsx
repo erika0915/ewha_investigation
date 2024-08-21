@@ -11,7 +11,7 @@ export const Login = () => {
     register,
     handleSubmit,
 
-    formState: { errors }, // 수정된 부분: errors를 가져옵니다.
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(LoginValidationSchema),
   });
@@ -36,7 +36,7 @@ export const Login = () => {
         if (result.message === "Success") {
           window.sessionStorage.setItem("token", result.token);
           window.sessionStorage.setItem("role", result.role);
-          window.sessionStorage.setItem("userCode", result.code);
+          window.sessionStorage.setItem("userCode", result.userCode);
           setIsLogin(true);
 
           if (data.userId === "admin" && data.password === "adminpassword") {
@@ -45,7 +45,7 @@ export const Login = () => {
             alert("로그인 되었습니다");
           }
 
-          setIsLogin(true); // 로그인 상태로 변경
+          setIsLogin(true);
           navigate("/");
         } else {
           alert("아이디와 비밀번호가 일치하지 않습니다.");
