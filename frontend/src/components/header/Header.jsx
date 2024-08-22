@@ -19,7 +19,7 @@ export function Header() {
 
   useEffect(() => {
     // 로컬 스토리지에서 토큰이 있으면 로그인 상태로 설정
-    const token = window.localStorage.getItem("token");
+    const token = window.sessionStorage.getItem("token");
     if (token) {
       setIsLogin(true);
     }

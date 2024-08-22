@@ -24,41 +24,119 @@ const BankSearchSection = ({ bank }) => {
   const userCode = window.sessionStorage.getItem("userCode");
 
   useEffect(() => {
-    const fetchScrapList = async () => {
-      try {
-        const response = await fetch(
-          `http://43.202.58.11:8080/api/users/${userCode}/scraps`
-        );
-        const result = await response.json();
-        if (result.data) {
-          const bookmarkState = {};
-          result.data.forEach((item) => {
-            bookmarkState[item.productCode] = true;
-          });
-          setBookmarkedItems(bookmarkState);
+    const storedBookmarks = window.sessionStorage.getItem("bookmarkedItems");
+    if (storedBookmarks) {
+      setBookmarkedItems(JSON.parse(storedBookmarks));
+    } else {
+      const fetchScrapList = async () => {
+        try {
+          const response = await fetch(
+            `http://43.202.58.11:8080/api/users/${userCode}/scraps`
+          );
+          const result = await response.json();
+          if (result.data) {
+            const bookmarkState = {};
+            result.data.forEach((item) => {
+              bookmarkState[item.productCode] = {
+                scrapCode: item.scrapCode,
+                bookmarked: true,
+              };
+            });
+            setBookmarkedItems(bookmarkState);
+            window.sessionStorage.setItem(
+              "bookmarkedItems",
+              JSON.stringify(bookmarkState)
+            );
+          }
+        } catch (error) {
+          console.error("Error fetching scrap list:", error);
         }
-      } catch (error) {
-        console.error("Error fetching scrap list:", error);
-      }
-    };
+      };
 
-    fetchScrapList();
+      fetchScrapList();
+    }
   }, [userCode]);
 
-  const handleBookmarkToggle = (productCode) => {
-    setBookmarkedItems((prevBookmarks) => {
-      const isBookmarked = prevBookmarks[productCode];
-      setPopupMessage(
-        isBookmarked
-          ? "MY 스크랩에서 삭제되었습니다."
-          : "MY 스크랩에 저장되었습니다."
-      );
+  const handleBookmarkToggle = async (productCode) => {
+    const authToken = window.sessionStorage.getItem("token");
+    const item = bookmarkedItems[productCode];
 
-      return {
-        ...prevBookmarks,
-        [productCode]: !isBookmarked,
+    if (item && item.bookmarked) {
+      const scrapCode = item.scrapCode;
+      const url = `http://43.202.58.11:8080/api/scraps/${scrapCode}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        if (response.ok) {
+          const updatedBookmarks = {
+            ...bookmarkedItems,
+            [productCode]: {
+              ...bookmarkedItems[productCode],
+              bookmarked: false,
+            },
+          };
+          setBookmarkedItems(updatedBookmarks);
+          window.sessionStorage.setItem(
+            "bookmarkedItems",
+            JSON.stringify(updatedBookmarks)
+          );
+          setPopupMessage("MY 스크랩에서 삭제되었습니다.");
+        } else {
+          const result = await response.json();
+          console.error("스크랩 삭제에 실패했습니다:", result.msg);
+        }
+      } catch (error) {
+        console.error("스크랩 삭제 요청 중 오류 발생:", error);
+      }
+    } else {
+      const url = `http://43.202.58.11:8080/api/users/${userCode}/scraps`;
+
+      const requestBody = {
+        productCode: productCode,
+        userCode: parseInt(userCode),
       };
-    });
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify(requestBody),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          const updatedBookmarks = {
+            ...bookmarkedItems,
+            [productCode]: {
+              scrapCode: result.data.scrapCode,
+              bookmarked: true,
+            },
+          };
+          setBookmarkedItems(updatedBookmarks);
+          window.sessionStorage.setItem(
+            "bookmarkedItems",
+            JSON.stringify(updatedBookmarks)
+          );
+          setPopupMessage("MY 스크랩에 저장되었습니다.");
+        } else {
+          console.error("스크랩 작업에 실패했습니다:", result.msg);
+        }
+      } catch (error) {
+        console.error("북마크 요청 중 오류 발생:", error);
+      }
+    }
+
     setShowPopup(true);
   };
 
@@ -67,6 +145,8 @@ const BankSearchSection = ({ bank }) => {
   };
 
   const { data } = bank.products;
+
+  const categoriesOrder = ["예금", "적금", "대출", "체크카드"];
 
   return (
     <S.BankSectionContainer>
@@ -78,11 +158,11 @@ const BankSearchSection = ({ bank }) => {
       )}
       <S.BankLogo src={logoPath} alt={`${bank.name} 로고`} />
       <S.ProductCategory>
-        {Object.keys(data).map((category, index) => (
+        {categoriesOrder.map((category, index) => (
           <div key={index}>
             <S.CategoryTitle>{category}</S.CategoryTitle>
             <S.CategoryColumn>
-              {data[category].map((product, idx) => (
+              {data[category]?.map((product, idx) => (
                 <React.Fragment key={idx}>
                   <S.ProductItem>
                     <S.ProductName>
@@ -91,7 +171,7 @@ const BankSearchSection = ({ bank }) => {
                           handleBookmarkToggle(product.productCode)
                         }
                       >
-                        {bookmarkedItems[product.productCode] ? (
+                        {bookmarkedItems[product.productCode]?.bookmarked ? (
                           <FaBookmark />
                         ) : (
                           <FaRegBookmark />
