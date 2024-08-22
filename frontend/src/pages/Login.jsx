@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Header } from "../components/index.js";
+import React, { useState, useEffect } from "react";
+import { Header } from "../components/index.js"; // Header 컴포넌트 import
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "../styles/Login.styles";
 import LoginValidationSchema from "../validations/LoginValidationSchema";
 
@@ -10,7 +10,7 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
-
+    
     formState: { errors },
   } = useForm({
     resolver: yupResolver(LoginValidationSchema),
@@ -19,6 +19,14 @@ export const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
+
+  // 세션 스토리지에서 로그인 상태 확인
+  useEffect(() => {
+    const token = window.sessionStorage.getItem("token");
+    if (token) {
+      setIsLogin(true);
+    }
+  }, []);
 
   const onSubmit = (data) => {
     fetch("http://43.202.58.11:8080/api/login", {
@@ -67,7 +75,7 @@ export const Login = () => {
 
   return (
     <S.LoginPage>
-      <Header isLogin={isLogin} />
+      <Header isLogin={isLogin} /> {/* Header 컴포넌트를 isLogin 상태와 함께 렌더링 */}
       <S.LoginBar>LOGIN</S.LoginBar>
       <S.LoginContainer>
         <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
@@ -76,14 +84,14 @@ export const Login = () => {
             <S.Input type="text" {...register("userId")} />
             {errors.userId && (
               <S.ErrorMessage>{errors.userId.message}</S.ErrorMessage>
-            )}{" "}
+            )}
           </S.LoginFormGroup>
           <S.LoginFormGroup>
             <S.Label>PASSWORD</S.Label>
             <S.Input type="password" {...register("password")} />
             {errors.password && (
               <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
-            )}{" "}
+            )}
           </S.LoginFormGroup>
           <S.LoginButtonGroup>
             <S.LoginButton type="submit">LOGIN</S.LoginButton>
