@@ -45,7 +45,9 @@ export const Login = () => {
           window.sessionStorage.setItem("token", result.token);
           window.sessionStorage.setItem("role", result.role);
           window.sessionStorage.setItem("userCode", result.userCode);
-          setIsLogin(true);
+          window.sessionStorage.setItem("userId", result.userId);
+          window.sessionStorage.setItem("userCode", result.userCode); // userCode 저장
+          setIsLogin(true);  // 로그인 상태로 설정
 
           if (data.userId === "admin" && data.password === "adminpassword") {
             alert("관리자로 로그인 되었습니다");
@@ -117,3 +119,4 @@ export const Login = () => {
 };
 
 export default Login;
+

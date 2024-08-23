@@ -8,38 +8,36 @@ import * as S from "../styles/Product.styles";
 import { useState } from "react";
 
 const logoMap = {
-  kb: kbLogo,
-  nh: nhLogo,
-  sh: shLogo,
-  woori: wooriLogo,
-  hana: hanaLogo,
+  국민은행: kbLogo,
+  농협은행: nhLogo,
+  신한은행: shLogo,
+  우리은행: wooriLogo,
+  하나은행: hanaLogo,
 };
 
 export const BankSection = ({ bank }) => {
-  const logoPath = logoMap[bank.logoKey];
+  const logoPath = logoMap[bank.name];
   const [bookmarkedProducts, setBookmarkedProducts] = useState({});
 
-  const handleBookmarkToggle = (productId, index) => {
-    setBookmarkedProducts((prev) => ({
-      ...prev,
-      [productId]: {
-        ...prev[productId],
-        [index]: !prev[productId]?.[index],
-      },
-    }));
+  const handleBookmarkToggle = (bookmarkKey) => {
+    setBookmarkedProducts((prevBookmarks) => {
+      return {
+        ...prevBookmarks,
+        [bookmarkKey]: !prevBookmarks[bookmarkKey],
+      };
+    });
   };
 
   return (
     <S.BankSectionContainer>
       <S.BankLogo src={logoPath} alt={`${bank.name} 로고`} />
-      {bank.products.map((product) => (
+      {bank.products.map((product, index) => (
         <ProductCard
-          key={product.id}
+          key={product.productCode}
           product={product}
-          bookmarked1={bookmarkedProducts[product.id]?.[0]}
-          bookmarked2={bookmarkedProducts[product.id]?.[1]}
-          onBookmarkToggle1={() => handleBookmarkToggle(product.id, 0)}
-          onBookmarkToggle2={() => handleBookmarkToggle(product.id, 1)}
+          index={index}
+          bookmarkedItems={bookmarkedProducts}
+          handleBookmarkToggle={handleBookmarkToggle}
         />
       ))}
     </S.BankSectionContainer>
