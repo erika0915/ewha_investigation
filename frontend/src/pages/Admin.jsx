@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Sidebar,
@@ -14,6 +14,37 @@ import { useNavigate } from 'react-router-dom';
 
 export const Admin = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]); // 상품 목록을 저장할 상태 추가
+
+  useEffect(() => {
+    const role = window.sessionStorage.getItem("role");
+    const token = window.sessionStorage.getItem("token");
+
+    if (role !== "admin") {
+      alert("관리자만 접근할 수 있는 페이지입니다.");
+      navigate('/'); // 관리자가 아니면 홈 페이지로 이동
+    } else {
+      // 토큰을 이용하여 상품 목록을 API에서 불러옴
+      fetch("http://43.202.58.11:8080/api/products", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`, // Authorization 헤더에 토큰 추가
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setProducts(data.data); // 상품 데이터를 상태에 저장
+        })
+        .catch((error) => {
+          console.error("상품 목록을 가져오는 중 오류 발생:", error);
+        });
+    }
+  }, [navigate]);
 
   const handleLogoClick = () => {
     navigate('/'); // 로고 클릭 시 메인 페이지로 이동
@@ -59,6 +90,11 @@ export const Admin = () => {
           </tbody>
         </Table>
       </TableContainer>
+    </Container>
+  );
+};
+
+
     </Container>
   );
 };
