@@ -35,7 +35,7 @@
   <tr>
     <td>EwhaGreen</td>
     <td>#186915</td>
-    <td><div style="width: 40px; height: 20px; background-color: #186915;"></div></td>
+    <td><div style="width: 40px; height: 20px; background-color:#186915;"></div></td>
   </tr>
 </table>
 
