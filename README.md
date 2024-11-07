@@ -24,9 +24,18 @@
 
 ## 🎨 Color Scheme
 
-| Color Name  | Hex Code |
-| ----------- | -------- |
-| EwhaGreen   | #186915  |
+<table>
+  <tr>
+    <th>Color Name</th>
+    <th>Hex Code</th>
+    <th>Preview</th>
+  </tr>
+  <tr>
+    <td>EwhaGreen</td>
+    <td>#186915</td>
+    <td><div style="width: 40px; height: 20px; background-color: #186915;"></div></td>
+  </tr>
+</table>
 
 
 
