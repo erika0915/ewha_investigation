@@ -1,8 +1,11 @@
 ![Ewha Investigation Header](https://capsule-render.vercel.app/api?type=waving&color=186915&height=200&section=header&text=EWHA%20INVESTIGATION&fontColor=ffffff&fontSize=50&animation=fadeIn&fontAlignY=35&desc=대학생%20전용%20금융%20상품%20비교%20서비스&descAlignY=51&descAlign=60)
 
+<br> 
 
 ## ✨ 프로젝트 소개
 **EWHA INVESTIGATION**은 대학생들이 금융 혜택을 보다 쉽게 누릴 수 있도록 [예금/적금/대출/체크카드] 등 주요 금융 상품을 한눈에 비교할 수 있는 서비스를 제공합니다.
+
+<br> 
 
 ## 👨‍🍳 팀 소개
 
