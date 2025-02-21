@@ -1,45 +1,44 @@
-![Ewha Investigation Header](https://capsule-render.vercel.app/api?type=waving&color=186915&height=300&section=header&text=EWHA%20INVESTIGATION&fontColor=ffffff&fontSize=70&animation=fadeIn&fontAlignY=35&desc=대학생%20전용%20금융%20상품%20비교%20서비스&descAlignY=51&descAlign=60)
+# 대학생 전용 금융 상품 비교 서비스, Ewha Investigation 
+<img src="https://github.com/user-attachments/assets/4540b3d7-a507-4774-8245-0e471736340d" width="600px"/>
 
-## ✨ 프로젝트 소개
-**EWHA INVESTIGATION**은 대학생들이 금융 혜택을 보다 쉽게 누릴 수 있도록 **[예금/적금/대출/체크카드]** 등 주요 금융 상품을 한눈에 비교할 수 있는 서비스를 제공합니다.
+---
+## 📖 목차 | Table of Contents
 
+- [프로젝트 소개](#프로젝트-소개--introduction)
+- [프로젝트 팀원](#프로젝트-팀원--team)
+- [기술 스택](#기술-스택--tech-stack)
+- [주요 기능](#주요-기능--features)
+---
 
-## 👨‍🍳 팀 소개
+## 프로젝트 소개 | Introduction
 
-| 이름   | 역할       | 소개 |
-| ------ | ---------- | ------------------------------------------------------------------ |
-| 양승혜 | UI/UX 🎨 FE 🌐     | 승혜님 한 줄 소개 |
-| 김민정| FE 🌐     | 민정님 한 줄 소개 |
-| 손시영| FE 🌐     | 시영님 한 줄 소개 |
-| 최수희| BE 💻 팀장 ✨ | 수희님 한 줄 소개  |
-| 최리안| BE 💻     | 리안님 한 줄 소개  |
+### 🔍 문제 | Problem
+- **복잡한 금융 상품 비교**: 대학생들이 다양한 금융 상품을 비교하기 어렵고 정보가 부족함
 
-## 🛠️ 기술 소개
-
-### Front-End
-<img src="https://img.shields.io/badge/HTML-%23E34F26?style=flat&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-%231572B6?style=flat&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"> <img src="https://img.shields.io/badge/React-%2361DAFB?style=flat&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Javascript-%23F7DF1E?style=flat&logo=Javascript&logoColor=white">
-
-### Back-End
-<img src="https://img.shields.io/badge/MySQL-%234479A1?style=flat&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/Springboot-%236DB33F?style=flat&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/AmazonEC2-%23FF9900?style=flat&logo=AmazonEC2&logoColor=white"> <img src="https://img.shields.io/badge/Amazons3-%23569A31?style=flat&logo=AmazonS3&logoColor=white"> <img src="https://img.shields.io/badge/AmazonRDS-%23527FFF?style=flat&logo=AmazonRDS&logoColor=white"> <img src="https://img.shields.io/badge/Ubuntu-%23E95420?style=flat&logo=Ubuntu&logoColor=white">
-
-## 🎨 Color Scheme
-
-<table>
-  <tr>
-    <th>Color Name</th>
-    <th>Hex Code</th>
-    <th>Preview</th>
-  </tr>
-  <tr>
-    <td>EwhaGreen</td>
-    <td>#186915</td>
-    <td><div style="width: 40px; height: 20px; background-color:#186915;"></div></td>
-  </tr>
-</table>
+### 💡 해결책 | Solution
+- **한눈에 보는 금융 상품 비교**: 예금, 적금, 대출, 체크카드 정보를 간편하게 비교 가능
 
 
+---
 
-## 📌 프로젝트 소개
+## 프로젝트 팀원 | Team
+
+| 팀장 | 팀원 | 팀원 | 팀원 |팀원 |
+|:---:|:---:|:---:|:---:|:---:|
+|<img src="https://github.com/erika0915.png" width="160px"/>|<img src="https://github.com/cherryan613.png" width="160px"/>|<img src="https://github.com/seunghye-rain.png" width="160px"/>|<img src="https://github.com/minnje0ng.png" width="160px"/>|<img src="https://github.com/sonsiyeong.png" width="160px"/>|<img src="https://github.com/erika0915.png" width="160px"/>|
+|[최수희](https://github.com/erika0915)|[최리안](https://github.com/cherryan613)|[양승혜](https://github.com/seunghye-rain)|[김민정](https://github.com/minnje0ng)|[손시영](https://github.com/sonsiyeong)|
+| BE 💻 |  BE 💻 | UI/UX 🎨 FE 🌐 | FE 🌐 | FE 🌐 |
+
+---
+
+##  기술 스택 | Tech Stack 
+- Frontend : Html, CSS, Javascript, React 
+- Backend : SpringBoot, MySQL
+- Deployment : AWS EC2 
+
+---
+
+## 주요 기능 | Features 
 <p align = "center">
   <img src="images\로그인 및 회원가입.png" alt="로그인 및 회원가입">
   <img src="images\상품화면.png" alt="상품화면">
